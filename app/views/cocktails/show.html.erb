@@ -8,6 +8,16 @@ Ingredients:
     </li>
   <% end %>
 </ul>
+<hr>
+<h2>Add ingredient</h2>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.input :description %>
+  <%= f.association :ingredient %>
+  <%= f.button :submit %>
+<% end %>
 
 <%= link_to 'Add ingredient', new_cocktail_dose_path(@cocktail) %>
 <br>

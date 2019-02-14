@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :doses, only: [:new, :create]
   end
 
+  # post 'cocktails/:id', to: 'doses#create'
   delete 'doses/:id', to: 'doses#destroy', as: :delete_dose
 
   root to: 'cocktails#index'
