@@ -1,4 +1,7 @@
 <h1>🍹 Cocktails 🍹</h1>
+<p>
+  <span id="banner-typed-text"></span>
+</p>
 <ul>
   <% @cocktails.each do |cocktail| %>
     <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
@@ -6,3 +9,7 @@
 </ul>
 
 <%= link_to 'Create new cocktail', new_cocktail_path %>
+
+<%= javascript_tag do %>
+  window.cocktails = JSON.parse('<%= ((@cocktails.map { |c| c.name }).to_json).html_safe %>')
+<% end %>
